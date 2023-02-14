@@ -8,6 +8,8 @@ import 'iosSub/cupertinoSecondPage.dart';
 List<Animal> favoriteList = List.empty(growable: true);
 
 class CupertinoMain extends StatefulWidget {
+  const CupertinoMain({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _CupertinoMain();
@@ -22,7 +24,7 @@ class _CupertinoMain extends State<CupertinoMain> {
   @override
   void initState() {
     super.initState();
-    tabBar = CupertinoTabBar(items: <BottomNavigationBarItem>[
+    tabBar = CupertinoTabBar(items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
       BottomNavigationBarItem(icon: Icon(CupertinoIcons.add)),
     ]);

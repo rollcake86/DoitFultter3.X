@@ -1,10 +1,11 @@
 import 'dart:io';
-
-import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LargeFileMain extends StatefulWidget {
+  const LargeFileMain({super.key});
+
   @override
   State<StatefulWidget> createState() => _LargeFileMain();
 }
@@ -19,7 +20,7 @@ TextEditingController? _editingController;
 @override
 void initState() {
   super.initState();
-  _editingController = new TextEditingController(text: 'https://www.motherjones.com/wp-content/uploads/2019/12/Getty121719.jpg?w=1200&h=630&crop=1');
+  _editingController = TextEditingController(text: 'https://www.motherjones.com/wp-content/uploads/2019/12/Getty121719.jpg?w=1200&h=630&crop=1');
 }
 
   Future<void> downloadFile() async {
@@ -33,7 +34,7 @@ void initState() {
         file = '${dir.path}/myimage.jpg';
         setState(() {
           downloading = true;
-          progressString = ((rec / total) * 100).toStringAsFixed(0) + '%';
+          progressString = '${((rec / total) * 100).toStringAsFixed(0)}%';
         });
       });
     } catch (e) {
@@ -52,14 +53,14 @@ void initState() {
       appBar: AppBar(
         title: TextField(
           controller: _editingController,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           keyboardType: TextInputType.text,
-          decoration: InputDecoration(hintText: 'url 입력하세요'),
+          decoration: const InputDecoration(hintText: 'url 입력하세요'),
         ),
       ),
       body: Center(
           child: downloading
-              ? Container(
+              ? SizedBox(
                   height: 120.0,
                   width: 200.0,
                   child: Card(
@@ -67,13 +68,13 @@ void initState() {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CircularProgressIndicator(),
-                        SizedBox(
+                        const CircularProgressIndicator(),
+                        const SizedBox(
                           height: 20.0,
                         ),
                         Text(
                           'Downloading File: $progressString',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         )
@@ -86,20 +87,20 @@ void initState() {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
                         print('none');
-                        return Text('데이터 없음');
+                        return const Text('데이터 없음');
                       case ConnectionState.waiting:
                         print('waiting');
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       case ConnectionState.active:
                         print('active');
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       case ConnectionState.done:
                         print('done');
                         if (snapshot.hasData) {
                           return snapshot.data as Widget;
                         }
                     }
-                    return Text('데이터 없음');
+                    return const Text('데이터 없음');
                   },
                   future: downloadWidget(file!),
                 )),
@@ -107,7 +108,7 @@ void initState() {
         onPressed: () {
           downloadFile();
         },
-        child: Icon(Icons.file_download),
+        child: const Icon(Icons.file_download),
       ),
     );
   }
@@ -115,7 +116,7 @@ void initState() {
   Future<Widget> downloadWidget(String filePath) async {
     File file = File(filePath);
     bool exist = await file.exists();
-    new FileImage(file).evict();
+    FileImage(file).evict();
     if (exist) {
       return Center(
         child: Column(
@@ -123,7 +124,7 @@ void initState() {
         ),
       );
     } else {
-      return Text('No Data');
+      return const Text('No Data');
     }
   }
 }

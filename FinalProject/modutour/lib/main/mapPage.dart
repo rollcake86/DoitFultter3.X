@@ -50,11 +50,12 @@ class _MapPage extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('검색하기'),
+        title: const Text('검색하기'),
       ),
       body: Container(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Row(
                 children: <Widget>[
@@ -112,7 +113,7 @@ class _MapPage extends State<MapPage> {
                           Hero(
                               tag: 'tourinfo$index',
                               child: Container(
-                                  margin: EdgeInsets.all(10),
+                                  margin: const EdgeInsets.all(10),
                                   width: 100.0,
                                   height: 100.0,
                                   decoration: BoxDecoration(
@@ -123,15 +124,17 @@ class _MapPage extends State<MapPage> {
                                           fit: BoxFit.fill,
                                           image: getImage(
                                               tourData[index].imagePath))))),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
-                          Container(
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 150,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Text(
                                   tourData[index].title!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -140,9 +143,7 @@ class _MapPage extends State<MapPage> {
                                     ? Text('전화 번호 : ${tourData[index].tel}')
                                     : Container(),
                               ],
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             ),
-                            width: MediaQuery.of(context).size.width - 150,
                           )
                         ],
                       ),
@@ -165,7 +166,6 @@ class _MapPage extends State<MapPage> {
                 controller: _scrollController,
               ))
             ],
-            mainAxisAlignment: MainAxisAlignment.start,
           ),
         ),
       ),
@@ -179,7 +179,7 @@ class _MapPage extends State<MapPage> {
             conflictAlgorithm: ConflictAlgorithm.replace)
         .then((value) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('즐겨찾기에 추가되었습니다')));
+          .showSnackBar(const SnackBar(content: Text('즐겨찾기에 추가되었습니다')));
     });
   }
 
@@ -187,7 +187,7 @@ class _MapPage extends State<MapPage> {
     if (imagePath != null) {
       return NetworkImage(imagePath);
     } else {
-      return AssetImage('repo/images/map_location.png');
+      return const AssetImage('repo/images/map_location.png');
     }
   }
 
@@ -198,7 +198,7 @@ class _MapPage extends State<MapPage> {
     var url =
         'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=$authKey&MobileOS=AND&MobileApp=ModuTour&_type=json&areaCode=1&numOfRows=10&sigunguCode=$area&pageNo=$page';
     if (contentTypeId != 0) {
-      url = url + '&contentTypeId=$contentTypeId';
+      url = '$url&contentTypeId=$contentTypeId';
     }
     print(url);
     var response = await http.get(Uri.parse(url));

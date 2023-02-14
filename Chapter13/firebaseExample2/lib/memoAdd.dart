@@ -6,7 +6,7 @@ import 'memo.dart';
 class MemoAddApp extends StatefulWidget {
   final DatabaseReference reference;
 
-  MemoAddApp(this.reference);
+  const MemoAddApp(this.reference, {super.key});
 
   @override
   State<StatefulWidget> createState() => _MemoAddApp();
@@ -14,7 +14,7 @@ class MemoAddApp extends StatefulWidget {
 
 class _MemoAddApp extends State<MemoAddApp> {
 
-  static final AdRequest request = AdRequest(
+  static const AdRequest request = AdRequest(
     keywords: <String>['foo', 'bar'],
     contentUrl: 'http://foo.com/bar.html',
     nonPersonalizedAds: true,
@@ -30,7 +30,7 @@ class _MemoAddApp extends State<MemoAddApp> {
 
   void _createInterstitialAd() {
     InterstitialAd.load(
-        adUnitId: InterstitialAd.testAdUnitId,
+        adUnitId: "",
         request: request,
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (InterstitialAd ad) {
@@ -85,7 +85,7 @@ class _MemoAddApp extends State<MemoAddApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('메모 추가'),
+        title: const Text('메모 추가'),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -94,7 +94,7 @@ class _MemoAddApp extends State<MemoAddApp> {
             children: <Widget>[
               TextField(
                 controller: titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelText: '제목', fillColor: Colors.blueAccent),
               ),
               Expanded(
@@ -102,7 +102,7 @@ class _MemoAddApp extends State<MemoAddApp> {
                     controller: contentController,
                     keyboardType: TextInputType.multiline,
                     maxLines: 100,
-                    decoration: InputDecoration(labelText: '내용'),
+                    decoration: const InputDecoration(labelText: '내용'),
                   )),
               MaterialButton(
                 onPressed: () {
@@ -118,9 +118,9 @@ class _MemoAddApp extends State<MemoAddApp> {
                   });
                   _showInterstitialAd();
                 },
-                child: Text('저장하기'),
                 shape:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
+                child: const Text('저장하기'),
               )
             ],
           ),

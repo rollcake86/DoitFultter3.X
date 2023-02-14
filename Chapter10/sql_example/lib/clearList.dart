@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqlite_api.dart';
-import 'package:sqlexample/todo.dart';
+import 'package:sql_example/todo.dart';
 
 class ClearListApp extends StatefulWidget {
   Future<Database> database;
-  ClearListApp(this.database);
+  ClearListApp(this.database, {super.key});
   @override
   State<StatefulWidget> createState() => _ClearListApp();
 }
@@ -27,50 +27,46 @@ class _ClearListApp extends State<ClearListApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('이미 한일'),
+        title: const Text('이미 한일'),
       ),
-      body: Container(
-        child: Center(
-          child: FutureBuilder(
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                  return CircularProgressIndicator();
-                case ConnectionState.waiting:
-                  return CircularProgressIndicator();
-                case ConnectionState.active:
-                  return CircularProgressIndicator();
-                case ConnectionState.done:
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemBuilder: (context, index) {
-                        Todo todo = (snapshot.data as List<Todo>)[index];
-                        return ListTile(
-                          title: Text(
-                            todo.title!,
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          subtitle: Container(
-                            child: Column(
-                              children: <Widget>[
-                                Text(todo.content!),
-                                Container(
-                                  height: 1,
-                                  color: Colors.blue,
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                      itemCount: (snapshot.data as List<Todo>).length,
-                    );
-                  }
-              }
-              return Text('No data');
-            },
-            future: clearList,
-          ),
+      body: Center(
+        child: FutureBuilder(
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return const CircularProgressIndicator();
+              case ConnectionState.waiting:
+                return const CircularProgressIndicator();
+              case ConnectionState.active:
+                return const CircularProgressIndicator();
+              case ConnectionState.done:
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      Todo todo = (snapshot.data as List<Todo>)[index];
+                      return ListTile(
+                        title: Text(
+                          todo.title!,
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                        subtitle: Column(
+                          children: <Widget>[
+                            Text(todo.content!),
+                            Container(
+                              height: 1,
+                              color: Colors.blue,
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                    itemCount: (snapshot.data as List<Todo>).length,
+                  );
+                }
+            }
+            return const Text('No data');
+          },
+          future: clearList,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -79,19 +75,19 @@ class _ClearListApp extends State<ClearListApp> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('완료한 일 삭제'),
-                  content: Text('완료한 일을 모두 삭제할까요?'),
+                  title: const Text('완료한 일 삭제'),
+                  content: const Text('완료한 일을 모두 삭제할까요?'),
                   actions: <Widget>[
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(true);
                         },
-                        child: Text('예')),
+                        child: const Text('예')),
                     TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(false);
                         },
-                        child: Text('아니요')),
+                        child: const Text('아니요')),
                   ],
                 );
               });
@@ -99,7 +95,7 @@ class _ClearListApp extends State<ClearListApp> {
             _removeAllTodos();
           }
         },
-        child: Icon(Icons.remove),
+        child: const Icon(Icons.remove),
       ),
     );
   }

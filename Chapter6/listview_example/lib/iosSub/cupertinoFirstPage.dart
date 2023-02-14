@@ -11,14 +11,14 @@ class CupertinoFirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
+        navigationBar: const CupertinoNavigationBar(
           middle: Text('동물 리스트'),
         ),
         child: ListView.builder(
           itemBuilder: (context, index) {
             return GestureDetector(
               child: Container(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 height: 100,
                 child: Column(
                   children: <Widget>[
@@ -48,7 +48,6 @@ class CupertinoFirstPage extends StatelessWidget {
                 });
               },
               onLongPress: (){
-                print('add fav');
                 favoriteList.add(Animal(animalName: animalList[index].animalName, kind: animalList[index].kind, imagePath: animalList[index].imagePath));
               },
             );

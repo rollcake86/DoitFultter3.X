@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class SliverPage extends StatefulWidget {
+  const SliverPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _SliverPage();
 }
@@ -18,7 +20,7 @@ class _SliverPage extends State<SliverPage> {
             expandedHeight: 150.0,
             // SliverAppBar 공간에 어떤 위젯을 만들지 설정
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Sliver Example'),
+              title: const Text('Sliver Example'),
               background: Image.asset('repo/images/sunny.png'),
             ),
             backgroundColor: Colors.deepOrangeAccent,
@@ -31,13 +33,13 @@ class _SliverPage extends State<SliverPage> {
                   color: Colors.blue,
                   child: Center(
                     child: Column(
-                      children: <Widget>[
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
                         Text(
                           'list 숫자',
                           style: TextStyle(fontSize: 30),
                         ),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.center,
                     ),
                   ),
                 )),
@@ -58,13 +60,13 @@ class _SliverPage extends State<SliverPage> {
                   color: Colors.blue,
                   child: Center(
                     child: Column(
-                      children: <Widget>[
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
                         Text(
                           '그리드 숫자',
                           style: TextStyle(fontSize: 30),
                         ),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.center,
                     ),
                   ),
                 )),
@@ -78,7 +80,7 @@ class _SliverPage extends State<SliverPage> {
                 customCard('4'),
               ]),
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2)),
+                  const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2)),
         ],
       ),
     );
@@ -91,7 +93,7 @@ class _SliverPage extends State<SliverPage> {
         child: Center(
             child: Text(
           text,
-          style: TextStyle(fontSize: 40),
+          style: const TextStyle(fontSize: 40),
         )),
       ),
     );

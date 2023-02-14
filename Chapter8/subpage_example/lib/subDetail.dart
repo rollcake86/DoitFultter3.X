@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SubDetail extends StatefulWidget{
+  const SubDetail({super.key});
+
   @override
   State<StatefulWidget> createState() => _SubDetail();
 }
 
 class _SubDetail extends State<SubDetail>{
 
-  List<String> todoList = new List.empty(growable: true);
+  List<String> todoList = List.empty(growable: true);
 
   @override
   void initState() {
@@ -24,12 +26,12 @@ class _SubDetail extends State<SubDetail>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sub Detail Example'),
+        title: const Text('Sub Detail Example'),
       ),
       body: ListView.builder(itemBuilder: (context, index){
         return Card(
           child: InkWell(
-            child: Text(todoList[index], style: TextStyle(fontSize: 30),) ,
+            child: Text(todoList[index], style: const TextStyle(fontSize: 30),) ,
             onTap: (){
               Navigator.of(context).pushNamed('/third' , arguments: todoList[index]);
             },
@@ -38,7 +40,7 @@ class _SubDetail extends State<SubDetail>{
       }, itemCount: todoList.length,),
         floatingActionButton: FloatingActionButton(onPressed: (){
           _addNavigation(context);
-        }, child: Icon(Icons.add),),
+        }, child: const Icon(Icons.add),),
     );
   }
   void _addNavigation(BuildContext context) async {

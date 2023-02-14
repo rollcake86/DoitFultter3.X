@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ImageWidgetApp extends StatefulWidget {
+  const ImageWidgetApp({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _ImageWidgetApp();
@@ -18,26 +20,24 @@ class _ImageWidgetApp extends State<ImageWidgetApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Widget'),
+        title: const Text('Image Widget'),
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                _imagePath,
-                width: _size,
-                height: _size,
-                fit: BoxFit.contain,
-              ),
-              Text(
-                '$_text',
-                style: TextStyle(
-                    fontFamily: 'Pacifico', fontSize: 30, color: _color),
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              _imagePath,
+              width: _size,
+              height: _size,
+              fit: BoxFit.contain,
+            ),
+            Text(
+              _text,
+              style: TextStyle(
+                  fontFamily: 'Pacifico', fontSize: 30, color: _color),
+            )
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {

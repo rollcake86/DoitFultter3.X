@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ThirdDetail extends StatelessWidget {
+  const ThirdDetail({super.key});
+
   @override
   Widget build(BuildContext context) {
     final String args = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Third Page'),
+        title: const Text('Third Page'),
       ),
-      body: Container(
-        child: Center(
-          child: Text(args , style: TextStyle(fontSize: 30),),
-        ),
+      body: Center(
+        child: Text(args , style: const TextStyle(fontSize: 30),),
       ),
     );
   }

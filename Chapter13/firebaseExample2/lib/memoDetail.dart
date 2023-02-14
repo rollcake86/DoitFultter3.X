@@ -5,7 +5,7 @@ import 'memo.dart';
 class MemoDetailPage extends StatefulWidget {
   final DatabaseReference reference;
   final Memo memo;
-  MemoDetailPage(this.reference, this.memo);
+  const MemoDetailPage(this.reference, this.memo, {super.key});
   @override
   State<StatefulWidget> createState() => _MemoDetailPage();
 }
@@ -20,8 +20,6 @@ class _MemoDetailPage extends State<MemoDetailPage> {
     super.initState();
     titleController = TextEditingController(text: widget.memo.title);
     contentController = TextEditingController(text: widget.memo.content);
-
-
   }
 
   @override
@@ -37,7 +35,7 @@ class _MemoDetailPage extends State<MemoDetailPage> {
             children: <Widget>[
               TextField(
                 controller: titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     labelText: '제목', fillColor: Colors.blueAccent),
               ),
               Expanded(
@@ -45,7 +43,7 @@ class _MemoDetailPage extends State<MemoDetailPage> {
                 controller: contentController,
                 keyboardType: TextInputType.multiline,
                 maxLines: 100,
-                decoration: InputDecoration(labelText: '내용'),
+                decoration: const InputDecoration(labelText: '내용'),
               )),
               MaterialButton(
                 onPressed: () {
@@ -58,9 +56,9 @@ class _MemoDetailPage extends State<MemoDetailPage> {
                     Navigator.of(context).pop(memo);
                   });
                 },
-                child: Text('수정하기'),
                 shape:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
+                child: const Text('수정하기'),
               )
             ],
           ),

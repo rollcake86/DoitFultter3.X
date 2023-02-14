@@ -1,0 +1,172 @@
+{
+  "project_info": {
+    "project_number": "271626870778",
+    "firebase_url": "https://widgetapplication-98eee.firebaseio.com",
+    "project_id": "widgetapplication-98eee",
+    "storage_bucket": "widgetapplication-98eee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271626870778:android:c2f8834b2c4ce25d5dce43",
+        "android_client_info": {
+          "package_name": "com.carrot.modu_tour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6dwOmnH7T5p8LRGHxbP2KRK6JzMSbK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271626870778:android:3ee8cbcd2c02d0db5dce43",
+        "android_client_info": {
+          "package_name": "com.example.android.firebaseui_login_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271626870778-vhlbq1vso1dsl1u053mvsk39ab53r944.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.firebaseui_login_sample",
+            "certificate_hash": "12d36018e74a9355e3c1842c6d0e026fe787edb0"
+          }
+        },
+        {
+          "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6dwOmnH7T5p8LRGHxbP2KRK6JzMSbK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271626870778:android:0127a7f2f7289a255dce43",
+        "android_client_info": {
+          "package_name": "com.rollcake.firebaseexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6dwOmnH7T5p8LRGHxbP2KRK6JzMSbK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271626870778:android:84a8dc3ee53dcd135dce43",
+        "android_client_info": {
+          "package_name": "com.rollcake.modutour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6dwOmnH7T5p8LRGHxbP2KRK6JzMSbK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271626870778:android:c857999dd06c6575",
+        "android_client_info": {
+          "package_name": "com.rollcake.parkingalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271626870778-nmhftc4ban64nde5i02i81q5hpg7gjt3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rollcake.parkingalert",
+            "certificate_hash": "85355bba4fdd9c87ea1e4aa9b7e435121e7e9555"
+          }
+        },
+        {
+          "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6dwOmnH7T5p8LRGHxbP2KRK6JzMSbK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271626870778-nkm4gbue860gd7o8fp2geb7ra63rv3g8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

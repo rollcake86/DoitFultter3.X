@@ -7,7 +7,7 @@ import 'main/mapPage.dart';
 
 class MainPage extends StatefulWidget {
    final Future<Database> database;
-   MainPage(this.database);
+   MainPage(this.database, {super.key});
   @override
   State<StatefulWidget> createState() => _MainPage();
 }
@@ -39,6 +39,7 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin {
     id = ModalRoute.of(context)!.settings.arguments as String?;
     return Scaffold(
         body: TabBarView(
+          controller: controller,
           children: <Widget>[
             // TabBarView에 채울 위젯들
             MapPage(
@@ -53,10 +54,9 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin {
             ),
             SettingPage()
           ],
-          controller: controller,
         ),
         bottomNavigationBar: TabBar(
-          tabs: <Tab>[
+          tabs: const <Tab>[
             Tab(
               icon: Icon(Icons.map),
             ),

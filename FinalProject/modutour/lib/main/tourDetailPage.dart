@@ -15,14 +15,14 @@ class TourDetailPage extends StatefulWidget {
   final DatabaseReference? databaseReference;
   final String? id;
 
-  TourDetailPage({this.tourData, this.index, this.databaseReference, this.id});
+  const TourDetailPage({super.key, this.tourData, this.index, this.databaseReference, this.id});
 
   @override
   State<StatefulWidget> createState() => _TourDetailPage();
 }
 
 class _TourDetailPage extends State<TourDetailPage> {
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   CameraPosition? _GoogleMapCamera;
   TextEditingController? _reviewTextController;
@@ -74,48 +74,46 @@ class _TourDetailPage extends State<TourDetailPage> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 '${widget.tourData!.title}',
-                style: TextStyle(color: Colors.white, fontSize: 40),
+                style: const TextStyle(color: Colors.white, fontSize: 40),
               ),
               centerTitle: true,
-              titlePadding: EdgeInsets.only(top: 10),
+              titlePadding: const EdgeInsets.only(top: 10),
             ),
             pinned: true,
             backgroundColor: Colors.deepOrangeAccent,
           ),
           SliverList(
               delegate: SliverChildListDelegate([
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: Center(
-                    child: Column(
-                      children: <Widget>[
-                        Hero(
-                            tag: 'tourinfo${widget.index}',
-                            child: Container(
-                                width: 300.0,
-                                height: 300.0,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border:
-                                    Border.all(color: Colors.black, width: 1),
-                                    image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: getImage(widget.tourData!.imagePath)
-                                      ,)))),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20, bottom: 20),
-                          child: Text(
-                            widget.tourData!.address!,
-                            style: TextStyle(fontSize: 20),
-                          ),
+                Center(
+                  child: Column(
+                    children: <Widget>[
+                      Hero(
+                          tag: 'tourinfo${widget.index}',
+                          child: Container(
+                              width: 300.0,
+                              height: 300.0,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border:
+                                  Border.all(color: Colors.black, width: 1),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: getImage(widget.tourData!.imagePath)
+                                    ,)))),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: Text(
+                          widget.tourData!.address!,
+                          style: const TextStyle(fontSize: 20),
                         ),
-                        getGoogleMap(),
-                        _disableWidget == false ? setDisableWidget() : showDisableWidget() ,
-                        //  reviewWidget()
-                      ],
-                    ),
+                      ),
+                      getGoogleMap(),
+                      _disableWidget == false ? setDisableWidget() : showDisableWidget() ,
+                      //  reviewWidget()
+                    ],
                   ),
                 ),
               ])),
@@ -127,13 +125,13 @@ class _TourDetailPage extends State<TourDetailPage> {
                   color: Colors.lightBlueAccent,
                   child: Center(
                     child: Column(
-                      children: <Widget>[
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
                         Text(
                           '후기',
                           style: TextStyle(fontSize: 30, color: Colors.white),
                         ),
                       ],
-                      mainAxisAlignment: MainAxisAlignment.center,
                     ),
                   ),
                 )),
@@ -144,10 +142,10 @@ class _TourDetailPage extends State<TourDetailPage> {
                 return Card(
                   child: InkWell(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
                       child: Text(
                         '${reviews[index].id} : ${reviews[index].review}',
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     ),
                     onDoubleTap: (){
@@ -173,7 +171,7 @@ class _TourDetailPage extends State<TourDetailPage> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: Text('후기 쓰기'),
+                            title: const Text('후기 쓰기'),
                             content: TextField(
                               controller: _reviewTextController,
                             ),
@@ -190,17 +188,17 @@ class _TourDetailPage extends State<TourDetailPage> {
                                         .child('review').child(widget.id!)
                                         .set(review.toJson());
                                   },
-                                  child: Text('후기 쓰기')),
+                                  child: const Text('후기 쓰기')),
                               MaterialButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('종료하기')),
+                                  child: const Text('종료하기')),
                             ],
                           );
                         });
                   },
-                  child: Text('댓글 쓰기'),
+                  child: const Text('댓글 쓰기'),
                 )
               ]))
         ],
@@ -231,60 +229,58 @@ class _TourDetailPage extends State<TourDetailPage> {
     if(imagePath != null) {
       return NetworkImage(imagePath);
     }else{
-      return AssetImage('repo/images/map_location.png');
+      return const AssetImage('repo/images/map_location.png');
     }
   }
 
   Widget setDisableWidget() {
-    return Container(
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            Text('데이터가 없습니다. 추가해주세요'),
-            Text('시각 장애인 이용 점수 :  ${disableCheck1.floor()}'),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Slider(
-                  value: disableCheck1,
-                  min: 0,
-                  max: 10,
-                  onChanged: (value) {
-                    setState(() {
-                      disableCheck1 = value;
-                    });
-                  }),
-            ),
-            Text('지체 장애인 이용 점수 : ${disableCheck2.floor()}'),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Slider(
-                  value: disableCheck2,
-                  min: 0,
-                  max: 10,
-                  onChanged: (value) {
-                    setState(() {
-                      disableCheck2 = value;
-                    });
-                  }),
-            ),
-            MaterialButton(
-              onPressed: () {
-                DisableInfo info = DisableInfo(widget.id ,disableCheck1.floor(),
-                    disableCheck2.floor(), DateTime.now().toIso8601String());
-                widget.databaseReference!
-                    .child("tour")
-                    .child(widget.tourData!.id.toString())
-                    .set(info.toJson())
-                    .then((value) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          const Text('데이터가 없습니다. 추가해주세요'),
+          Text('시각 장애인 이용 점수 :  ${disableCheck1.floor()}'),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Slider(
+                value: disableCheck1,
+                min: 0,
+                max: 10,
+                onChanged: (value) {
                   setState(() {
-                    _disableWidget = true;
+                    disableCheck1 = value;
                   });
+                }),
+          ),
+          Text('지체 장애인 이용 점수 : ${disableCheck2.floor()}'),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Slider(
+                value: disableCheck2,
+                min: 0,
+                max: 10,
+                onChanged: (value) {
+                  setState(() {
+                    disableCheck2 = value;
+                  });
+                }),
+          ),
+          MaterialButton(
+            onPressed: () {
+              DisableInfo info = DisableInfo(widget.id ,disableCheck1.floor(),
+                  disableCheck2.floor(), DateTime.now().toIso8601String());
+              widget.databaseReference!
+                  .child("tour")
+                  .child(widget.tourData!.id.toString())
+                  .set(info.toJson())
+                  .then((value) {
+                setState(() {
+                  _disableWidget = true;
                 });
-              },
-              child: Text('데이터 저장하기'),
-            )
-          ],
-        ),
+              });
+            },
+            child: const Text('데이터 저장하기'),
+          )
+        ],
       ),
     );
   }
@@ -308,32 +304,34 @@ class _TourDetailPage extends State<TourDetailPage> {
       child: Column(
         children: <Widget>[
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Icon(Icons.accessible , size: 40, color: Colors.orange),
-              Text('지체 장애 이용 점수 : ${_disableInfo!.disable2}' ,style: TextStyle(fontSize: 20),)
-            ],mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              const Icon(Icons.accessible , size: 40, color: Colors.orange),
+              Text('지체 장애 이용 점수 : ${_disableInfo!.disable2}' ,style: const TextStyle(fontSize: 20),)
+            ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Icon(Icons.remove_red_eye, size: 40 , color: Colors.orange,),
-              Text('시각 장애 이용 점수 : ${_disableInfo!.disable1}',style: TextStyle(fontSize: 20))
-            ],mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              const Icon(Icons.remove_red_eye, size: 40 , color: Colors.orange,),
+              Text('시각 장애 이용 점수 : ${_disableInfo!.disable1}',style: const TextStyle(fontSize: 20))
+            ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text('작성자  : ${_disableInfo!.id}'),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           MaterialButton(onPressed: (){
             setState(() {
               _disableWidget = false;
             });
-          } , child: Text('새로 작성하기'),)
+          } , child: const Text('새로 작성하기'),)
         ],
       ),
     );

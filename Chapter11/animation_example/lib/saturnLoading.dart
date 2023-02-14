@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class SaturnLoading extends StatefulWidget {
-  _SaturnLoading _saturnLoading = _SaturnLoading();
+  final _SaturnLoading _saturnLoading = _SaturnLoading();
+
+  SaturnLoading({super.key});
 
   void start() {
     _saturnLoading.start();
@@ -44,10 +46,10 @@ class _SaturnLoading extends State<SaturnLoading>
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Transform.rotate(
                   angle: _animation!.value,
-                  origin: Offset(35, 35),
+                  origin: const Offset(35, 35),
                   child: Image.asset(
                     'repo/images/saturn.png',
                     width: 20,
@@ -69,7 +71,7 @@ class _SaturnLoading extends State<SaturnLoading>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
     _animation =
         Tween<double>(begin: 0, end: pi * 2).animate(_animationController!);
     _animationController!.repeat();
